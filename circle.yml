@@ -12,3 +12,7 @@ deployment:
     branch: master
     commands:
       - eb deploy steuploadmiddleware-test
+  prod:
+    branch: prod
+    commands:
+      - eb deploy steuploadmiddleware-prod    
