@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-test-query: SELECT 1
+      minimum-idle: 1
+      maximum-pool-size: 5
+  mvc:
+    static-path-pattern: /**
+    dispatch-options-request: true
+  profiles:
+    active: dev
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+server:
+  context:
+    path: /
+liquibase:
+  enabled: false    
+logging:
+  level:
+    root: WARN
+  org:
+    springframework:
+      web: WARN
+    hibernate: WARN

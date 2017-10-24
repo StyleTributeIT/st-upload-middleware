@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: steuploadmiddleware
+deploy:
+  artifact: target/uploader-0.0.1-SNAPSHOT.jar    
+global:
+  application_name: steuploadmiddleware
+  default_ec2_keyname: aws-eb
+  default_platform: 64bit Amazon Linux 2016.09 v2.4.4 running Java 8
+  default_region: ap-southeast-1

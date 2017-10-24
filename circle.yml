@@ -1,0 +1,14 @@
+machine:
+  pre:
+    - pip install awsebcli
+test:
+  override:
+    - echo "no tests at the moment. YOLO"
+compile:
+  override:
+    - bash mvnw package -Dmaven.test.skip=true -Dspring.profiles.active=prod
+deployment:
+  test:
+    branch: master
+    commands:
+      - eb deploy steuploadmiddleware-test

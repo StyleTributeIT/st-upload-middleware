@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_CONNECTION}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+server:
+  port: ${PORT}
+logging:
+  level:
+    root: INFO
+  org:
+    springframework:
+      web: INFO
+    hibernate: INFO
+styletribute:
+  api:
+    url: ${APIURL}
