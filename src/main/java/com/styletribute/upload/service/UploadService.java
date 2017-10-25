@@ -1,8 +1,14 @@
 package com.styletribute.upload.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.styletribute.upload.domain.FlashAirDto;
 import com.styletribute.upload.domain.StatusEnum;
 import com.styletribute.upload.domain.Upload;
 import com.styletribute.upload.domain.UploadDto;
@@ -20,7 +26,7 @@ public class UploadService {
     public void setUploader(Upload upload) {
         Upload flashAir = uploadRepository.findOneByFlashAirId(upload.getFlashAirId());
         if (flashAir != null) {
-            if (flashAir.getFlashAirPass().equals(upload.getFlashAirPass())){
+            if (flashAir.getFlashAirPass().equals(upload.getFlashAirPass())) {
                 if (flashAir.getStatus().equals(StatusEnum.UNLOCK)){
                     flashAir.setSku(upload.getSku());
                     flashAir.setLabel(upload.getLabel());
@@ -37,7 +43,7 @@ public class UploadService {
         }
     }
     
-    public UploadDto getUploader(String flashAirId, String flashAirPass){
+    public UploadDto getUploader(String flashAirId, String flashAirPass) {
         Upload flashAir = uploadRepository.findOneByFlashAirId(flashAirId);
         if (flashAir != null){
             if (flashAir.getFlashAirPass().equals(flashAirPass) == false){
@@ -48,5 +54,10 @@ public class UploadService {
         }
         return new UploadDto(flashAir.getSku(), flashAir.getLabel());
     }
-
+    
+    public List<FlashAirDto> getAllUploaders() {
+        return uploadRepository.findAll().stream().map(s-> {
+          return new FlashAirDto(s.getFlashAirId(), s.getFlashAirPass());
+        }).collect(Collectors.toList());
+    }
 }

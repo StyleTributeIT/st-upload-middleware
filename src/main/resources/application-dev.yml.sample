@@ -21,5 +21,7 @@ logging:
 styletribute:
   api:
     url: https://apiurl/
+  origin:
+    url: http://originurl
   token:
     admin: admintoken

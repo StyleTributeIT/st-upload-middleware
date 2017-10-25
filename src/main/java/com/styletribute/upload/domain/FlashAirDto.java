@@ -1,7 +1,6 @@
 package com.styletribute.upload.domain;
 
 import java.io.Serializable;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,10 +14,10 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UploadDto implements Serializable{
+public class FlashAirDto implements Serializable{
 
     private static final long serialVersionUID = 3192437656089189922L;
     
-    private String sku;
-    private String label; 
+    private String username;
+    private String password;   
 }

@@ -5,20 +5,20 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UploadDto implements Serializable{
+public class UploadAdminDto implements Serializable{
 
     private static final long serialVersionUID = 3192437656089189922L;
     
-    private String sku;
-    private String label; 
+    private List<FlashAirDto> flashAirDtos;
+    private String adminUser;    
 }

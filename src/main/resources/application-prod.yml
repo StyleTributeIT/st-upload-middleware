@@ -21,5 +21,7 @@ logging:
 styletribute:
   api:
     url: ${APIURL}
+  origin:
+    url: ${ORIGINURL}
   token:
     admin: ${ADMINTOKEN}
