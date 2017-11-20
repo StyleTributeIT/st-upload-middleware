@@ -109,6 +109,7 @@ public class UploadService {
         if (uploadDto.getCurPhotoId() == null) {
             map.add("file", fileSystem);
             map.add("label", uploadDto.getLabel());
+            map.add("processing_status", "0");
             res = requestService.post("admin/product/sku/" + uploadDto.getSku() + "/photos", map, headers);
         } else {
             map.add("file", fileSystem);
