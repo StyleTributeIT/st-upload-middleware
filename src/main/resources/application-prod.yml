@@ -25,3 +25,8 @@ styletribute:
     url: ${ORIGINURL}
   token:
     admin: ${ADMINTOKEN}
+  pusher:
+    appid: ${PUSHER_APP_ID}
+    appkey: ${PUSHER_APP_KEY}
+    appsecret: ${PUSHER_APP_SECRET}  
+    appcluster: ${PUSHER_APP_CLUSTER}

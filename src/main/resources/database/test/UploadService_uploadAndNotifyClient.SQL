@@ -1,0 +1,1 @@
+INSERT INTO testoffer.upload (upload_id, flash_air_id, flash_air_pass, status, magento_user, sku, label, cur_photo_id) VALUES (100000000, 'testflashair1', 'test123', 'UNLOCK', 'hans', 'SBSGBG21515', 'Front', null);

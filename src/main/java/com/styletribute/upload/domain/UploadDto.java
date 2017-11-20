@@ -21,4 +21,5 @@ public class UploadDto implements Serializable{
     
     private String sku;
     private String label; 
+    private Long curPhotoId; 
 }

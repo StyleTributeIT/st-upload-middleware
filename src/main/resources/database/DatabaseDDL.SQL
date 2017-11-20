@@ -8,7 +8,8 @@ create table upload
   status varchar(50) not null,
   magento_user varchar(200),
   sku varchar(100),
-  label varchar(100)
+  label varchar(100),
+  cur_photo_id integer
 )
 ;
 

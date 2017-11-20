@@ -6,7 +6,7 @@ test:
     - echo "no tests at the moment. YOLO"
 compile:
   override:
-    -  mvn package -Dmaven.test.skip=true -Dspring.profiles.active=prod
+    - mvn package -Dmaven.test.skip=true -Dspring.profiles.active=prod
 deployment:
   test:
     branch: master
@@ -15,4 +15,4 @@ deployment:
   prod:
     branch: prod
     commands:
-      - eb deploy steuploadmiddleware-prod    
+      - eb deploy steuploadmiddleware-production

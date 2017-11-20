@@ -52,4 +52,7 @@ public class Upload implements Serializable{
     
     @Column(name="label")
     private String label;   
+    
+    @Column(name="cur_photo_id")
+    private Long curPhotoId;   
 }

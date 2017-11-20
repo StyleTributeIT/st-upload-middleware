@@ -20,7 +20,9 @@ server:
   context:
     path: /
 liquibase:
-  enabled: false    
+  enabled: false
+multipart:
+  enabled: true      
 logging:
   level:
     root: WARN

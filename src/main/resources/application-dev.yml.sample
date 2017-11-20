@@ -25,3 +25,8 @@ styletribute:
     url: http://originurl
   token:
     admin: admintoken
+  pusher:
+    appid: appidfrompusher
+    appkey: appkeyfrompusher
+    appsecret: appsecretfrompusher
+    appcluster: cluster(region)
