@@ -32,6 +32,7 @@
 		</repository>
     
 	</repositories>
+  
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -107,33 +108,33 @@
 		</dependency>
 	</dependencies>
   <build>
+   <resources>
+        <resource>
+            <directory>src/main/resources/ebextensions</directory>
+            <targetPath>.ebextensions</targetPath>
+            <filtering>true</filtering>
+        </resource>
+        <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <filtering>true</filtering>
+            <includes>
+                <include>**/application*.yml</include>
+                <include>**/application*.properties</include>
+            </includes>
+        </resource>
+        <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <excludes>
+                <exclude>**/application*.yml</exclude>
+                <exclude>**/application*.properties</exclude>
+            </excludes>
+        </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>prepare</id>
-              <phase>package</phase>
-                <configuration>
-                  <tasks>
-                    <unzip src="${project.build.directory}/${project.build.finalName}.jar" dest="${project.build.directory}/${project.build.finalName}" />
-                    <copy todir="${project.build.directory}/${project.build.finalName}/" overwrite="false">
-                      <fileset dir="./" includes=".ebextensions/**"/>
-                    </copy>
-                    <zip compress="false" destfile="${project.build.directory}/${project.build.finalName}.jar" basedir="${project.build.directory}/${project.build.finalName}"/>
-                  </tasks>
-                </configuration>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-           </execution>
-         </executions>
-        </plugin>
     </plugins>
   </build>
 </project>
