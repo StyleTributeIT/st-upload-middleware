@@ -34,4 +34,13 @@ public class UploadServiceTests {
         MultipartFile file = new MockMultipartFile("file", "logo.jpg", "image/jpeg", "ssssssss".getBytes());
         uploadService.uploadAndNotifyClient(upload.getFlashAirId(), upload.getFlashAirPass(), file);
     }
+    @Test
+    @Sql({"classpath:/database/test/UploadService_uploadAndNotifyClient.SQL"})
+    @Rollback
+    public void uploadAndNotifyClientWithMaxsize() {
+        Upload upload = uploadRepository.getOne(100000000L);
+        byte[] bytes = new byte[1024 * 1024 * 10];
+        MultipartFile file = new MockMultipartFile("file", "logo.jpg", "image/jpeg", bytes);
+        uploadService.uploadAndNotifyClient(upload.getFlashAirId(), upload.getFlashAirPass(), file);
+    }
 }

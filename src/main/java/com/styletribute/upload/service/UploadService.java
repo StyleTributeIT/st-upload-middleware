@@ -119,4 +119,8 @@ public class UploadService {
         pusherService.onImageUpload(uploadDto.getSku(), uploadDto.getLabel(), res);
         this.deleteTempFile(tempfileName);
     }
+    
+    public void notifyCameraClient(String flashAirId) {
+        pusherService.onFlashairReady(flashAirId);
+    }
 }

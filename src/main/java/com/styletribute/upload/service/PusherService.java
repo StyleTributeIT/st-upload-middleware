@@ -56,4 +56,10 @@ public class PusherService {
         }
         this.trigger("uploader-channel", "image-upload", map);
     }
+    
+    public void onFlashairReady(String flashairId) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("id", flashairId);
+        this.trigger("uploader-channel", "flashair-ready", map);
+    }
 }

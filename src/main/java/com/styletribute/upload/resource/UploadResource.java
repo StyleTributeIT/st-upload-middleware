@@ -40,6 +40,19 @@ public class UploadResource {
         return resp;
     }
     
+    @RequestMapping(value = "set/signal/{flashAirId}", method = RequestMethod.GET)
+    @Transactional
+    public ResponseEntity<?> signal(@PathVariable String flashAirId) {
+        ResponseEntity<?> resp = null;
+        try{
+            uploadService.notifyCameraClient(flashAirId);
+            resp = ResponseEntity.ok("");
+        }catch(Exception e){
+            resp = ResponseEntity.badRequest().body(e.getMessage());    
+        }
+        return resp;
+    }
+    
     @RequestMapping(value = "set/{flashAirId}/{flashAirPass}", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @Transactional
     public ResponseEntity<?> upload(@PathVariable String flashAirId, @PathVariable String flashAirPass, @RequestParam("file") MultipartFile file) {
