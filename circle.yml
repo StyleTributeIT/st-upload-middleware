@@ -15,4 +15,4 @@ deployment:
   prod:
     branch: prod
     commands:
-      - eb deploy steuploadmiddleware-production
+      - eb deploy steuploadmiddleware-prod
