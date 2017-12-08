@@ -98,6 +98,8 @@ public class UploadService {
     public void uploadAndNotifyClient(String flashAirId, String flashAirPass, MultipartFile file) {
         UploadDto uploadDto = this.getUploader(flashAirId, flashAirPass);
         
+        pusherService.beforeImageUpload(flashAirId);
+        
         LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
         
         String tempfileName = this.constructTempFile(file);
@@ -116,7 +118,26 @@ public class UploadService {
             res = requestService.post("admin/product/sku/" + uploadDto.getSku() + "/photos/" + uploadDto.getCurPhotoId().toString(), map, headers);    
         }
         
-        pusherService.onImageUpload(uploadDto.getSku(), uploadDto.getLabel(), res);
+        pusherService.afterImageUpload(uploadDto.getSku(), uploadDto.getLabel(), res);
+        this.deleteTempFile(tempfileName);
+    }
+    
+    public void uploadAndNotifyClientWithoutFlashair(String sku, String label, MultipartFile file) {
+        LinkedMultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        
+        String tempfileName = this.constructTempFile(file);
+        FileSystemResource fileSystem = new FileSystemResource(tempfileName);
+        
+        HttpHeaders headers = requestService.authHeader();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+        Object res = null;
+        
+        map.add("file", fileSystem);
+        map.add("label", label);
+        map.add("processing_status", "0");
+        res = requestService.post("admin/product/sku/" + sku + "/photos", map, headers);
+        
+        pusherService.afterImageUpload(sku, label, res);
         this.deleteTempFile(tempfileName);
     }
     

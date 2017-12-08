@@ -45,7 +45,7 @@ public class PusherService {
         }
     }
     
-    public void onImageUpload(String sku, String label, Object res) {
+    public void afterImageUpload(String sku, String label, Object res) {
         Map<String, String> map = new HashMap<String, String>();
         map.put("sku", sku);
         map.put("label", label);
@@ -55,6 +55,12 @@ public class PusherService {
             map.put("result", "");
         }
         this.trigger("uploader-channel", "image-upload", map);
+    }
+    
+    public void beforeImageUpload(String flashairId) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("id", flashairId);
+        this.trigger("uploader-channel", "next-upload", map);
     }
     
     public void onFlashairReady(String flashairId) {
