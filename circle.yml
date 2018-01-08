@@ -11,8 +11,8 @@ deployment:
   test:
     branch: master
     commands:
-      - eb deploy steuploadmiddleware-test
+      - eb deploy picture-uploader-middleware-staging
   prod:
     branch: prod
     commands:
-      - eb deploy steuploadmiddleware-prod
+      - eb deploy picture-uploader-middleware-production
